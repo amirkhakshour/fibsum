@@ -67,3 +67,8 @@ make server
 ```bash
 make test
 ```
+
+
+## todo
+1. add swagger documentation
+2. improve algorithm in regards to memoization of duplicate paths.
