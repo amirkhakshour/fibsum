@@ -43,7 +43,7 @@ class HealthCheckService:
             expires = timestamp + config.HEALTH_FAILED_TTL
 
         result = {
-            'checker': checker.__name__,
+            'info': checker.__doc__,
             'output': output,
             'passed': passed,
             'timestamp': timestamp,
