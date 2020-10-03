@@ -10,4 +10,10 @@ class DefaultHealthCheckTest(unittest.TestCase):
         self.client = self.app.test_client()
 
     def test_registry(self):
-        pass
+        @self.hc.register()
+        def test_ok():
+            return True, "OK"
+
+        self.assertTrue(len(self.hc._registry.keys()) == 1)
+        self.assertTrue(test_ok.__name__ in self.hc._registry)
+        self.assertTrue(self.hc._registry[test_ok.__name__] == test_ok)
