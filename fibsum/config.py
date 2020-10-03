@@ -17,3 +17,7 @@ if READ_DOT_ENV_FILE:
 ENV = os.getenv("FLASK_ENV")
 DEBUG = ENV == "development"
 SECRET_KEY = os.getenv("SECRET_KEY")
+
+# health check config
+HEALTH_SUCCESS_TTL = os.getenv("HEALTH_SUCCESS_TTL", default=30)
+HEALTH_FAILED_TTL = os.getenv("HEALTH_FAILED_TTL", default=10)
