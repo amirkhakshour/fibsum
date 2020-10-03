@@ -28,7 +28,12 @@ $ make docker-run
 ```
 you can access the API using the following url:
 ```
-http://127.0.0.1:8000/api/v1/
+# fibsum:
+$ curl http://127.0.0.1:8000/api/v1/fibsum/12
+$ curl http://127.0.0.1:8000/api/v1/fibsum/{target_value_as_int}
+
+# health check:
+$ curl http://127.0.0.1:8000/api/v1/health
 ```
 #### run tests using created docker container:
 ```bash
