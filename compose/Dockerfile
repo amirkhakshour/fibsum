@@ -14,8 +14,8 @@ WORKDIR /app
 # Requirements are installed here to ensure they will be cached.
 COPY poetry.lock .
 COPY pyproject.toml .
-RUN poetry install --no-interaction  --no-dev
 
+RUN poetry install --no-interaction
 
 COPY ./compose/entrypoint /entrypoint
 RUN sed -i 's/\r$//g' /entrypoint

@@ -8,8 +8,6 @@ services:
     image: fibsum
     container_name: api-app
     command: /start
-    env_file:
-      - ./.env
     volumes:
       - ./fibsum:/code/fibsum
     ports:
