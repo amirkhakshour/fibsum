@@ -20,12 +20,13 @@ class HealthCheckResource(Resource):
     """
     CHECK_SUCCESS_HTTP_STATUS = 200
     CHECK_FAILED_HTTP_STATUS = 500
+    checker = health_checker
 
     def _check_reduce(self, passed, result):
         return passed and result.get('passed')
 
     def get(self):
-        results = health_checker.check()
+        results = self.checker.check()
         passed = reduce(self._check_reduce, results, True)
         message = checker_response_message(results, passed)
         if passed:
