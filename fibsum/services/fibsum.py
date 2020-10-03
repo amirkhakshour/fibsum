@@ -32,6 +32,7 @@ def subset_sum(
         result.pop()
 
 
+@lru_cache()
 def all_comb_sum(target: int) -> List[List[int]]:
     """
     Given a target, find all the possible combinations from
