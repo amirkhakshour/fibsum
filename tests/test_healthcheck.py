@@ -41,3 +41,16 @@ class DefaultHealthCheckTest(unittest.TestCase):
             self.assertEqual(200, response.status_code)
             jr = flask.json.loads(response.data)
             self.assertEqual(success_message, jr['results'][0]["output"])
+
+    def test_endpoint_500_response_code(self):
+        fail_message = "dummy failed message"
+
+        @self.hc.register()
+        def test_fails():
+            return False, fail_message
+
+        with mock.patch.object(HealthCheckResource, 'checker', self.hc):
+            response = self.client.get(self.path)
+            self.assertEqual(500, response.status_code)
+            jr = flask.json.loads(response.data)
+            self.assertEqual(fail_message, jr['results'][0]["output"])
